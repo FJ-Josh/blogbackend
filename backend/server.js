@@ -1,7 +1,9 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const cors = require("cors");
 const db = require("./db"); // Make sure this is your MySQL connection
+
 
 // Middleware
 app.use(cors());

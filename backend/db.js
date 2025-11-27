@@ -1,16 +1,19 @@
 const mysql = require("mysql2");
 
 const db = mysql.createConnection({
-    host: "bnpurkro2n86avb9woau-mysql.services.clever-cloud.com",
-    user: "u1bxctqneeqfbnfq",
-    password: "tx2zvKVHyRwqw5tgAvvg",
-    database: "bnpurkro2n86avb9woau",
-    pot: 3306
+  host: process.env.MYSQLHOST,
+  user: process.env.MYSQLUSER,
+  password: process.env.MYSQLPASSWORD,
+  port: process.env.MYSQLPORT,
+  database: process.env.MYSQLDATABASE
 });
 
-db.connect((err) => {
-    if (err) throw err;
-    console.log("MySQL Connected!");
+db.connect(err => {
+  if (err) {
+    console.error("❌ Database connection failed:", err);
+  } else {
+    console.log("✅ Connected to Railway MySQL!");
+  }
 });
 
 module.exports = db;
